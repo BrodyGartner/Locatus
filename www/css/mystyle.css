@@ -1,0 +1,151 @@
+.topofheader{
+    background-size: contain;
+    background-image: url("../img/maptureBanner.png");
+    /* Full height */
+    height: 200%;
+    padding-bottom: 30px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 100%;
+}
+
+#HomePage{
+    background-color: #4F5CA2;
+}
+
+#changeAccount{
+    position: relative;
+}
+
+#devs{
+    color: white;
+    font-family:"Calibri", Calibri, serif;
+    text-align: center;
+
+
+}
+#welcome
+{
+    /*font-size: 20px;*/
+    color: white;
+    font-family:"Fira Code Light", "Fira Code", serif;
+    text-align: center;
+}
+
+#welcomeP
+{
+    font-size: 20px;
+    color: white;
+    font-family:"Fira Code Light", "Fira Code", serif;
+    text-align: center;
+}
+
+#SeeMap, #PhotoMap, #ShowStatusLocation {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+#StatusMap{
+    height: 100%;
+    width: 100%;
+}
+
+
+.statusForm .wrapper {
+    float: left;
+    width: 100%;
+}
+
+.statusForm .wrapper .content {
+    margin: 0 75px 0 0px;
+}
+
+.statusForm .left {
+    float: left;
+    width: 92px;
+    margin-left: -100%;
+}
+
+.statusForm .right {
+    float: left;
+    width: 75px;
+    margin-left: -75px;
+}
+
+#StatusButton{
+    background-color: #4247a2;
+    color: white;
+}
+#NewsFeed{
+    background-color: #EAEAEA;
+}
+
+#ProfilePage{
+    background-color: #4F5CA2;
+}
+.btnEdit{
+    padding-right: 40px;
+    margin-left: 80px;
+}
+.btnLogout{
+    padding-right: 40px;
+    float: left;
+    width: 100%;
+}
+
+.profileShow{
+    padding-left: 30px;
+    background-color: #EAEAEA;
+    padding-top: 20px;
+    padding-bottom: 10%;
+}
+.profilePic{
+    /*top: 70px;*/
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+    margin-left: 130px;
+}
+
+label.error{
+    color:red;
+}
+
+#overlayPanel1{
+    background-color: #4F5CA2;
+    color: white;
+
+}
+#overlayPanel2{
+    background-color: #4F5CA2;
+    color: white;
+
+}
+
+#overlayPanel7{
+    background-color: #4F5CA2;
+    color: white;
+
+}
+#overlayPanel5{
+    background-color: #4F5CA2;
+    color: white;
+
+}
+#overlayPanel6{
+    background-color: #4F5CA2;
+    color: white;
+
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--jQuery -->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!--jQuery Mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jQuery Validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLNXm7Q2_YxIXQ8soHFNCsTjFQ8UU4Nxo"
+            type="text/javascript"></script>
+    <script src="js/global.js"></script>
+    <script src="js/geo.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/locatusDAL.js"></script>
+    <script src="js/locatusFacade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/database.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/signUpStyle.css">
+</head>
+<body class="home">
+<section>
+    <img src="img/locatusIcon.png" class="locatusLogo">
+    <form method="post" class="signUpForm" id="signUpForm" name="signUpForm">
+
+        <div class="container">
+            <label for="username2"><b>Username:</b></label>
+            <input type="text" placeholder="Enter Username" name="username2" id="username2" data-row-username="">
+
+            <label for="password2"><b>Password:</b></label>
+            <input type="password" placeholder="Enter Password" name="password2" id="password2">
+            <label for="password2"><b>Verify Password:</b></label>
+            <input type="password" placeholder="Verify Password" name="verifyPassword2" id="verifyPassword2">
+
+            <label for="inptFirstName"><b>First Name:</b></label>
+            <input type="text" placeholder="Enter First Name" name="inptFirstName" id="inptFirstName">
+
+            <label for="inptLastName"><b>Last Name:</b></label>
+            <input type="text" placeholder="Enter Last Name:" name="inptLastName" id="inptLastName">
+
+            <label for="inptEmail"><b>Email:</b></label>
+            <input type="text" placeholder="Enter Email" name="inptEmail" id="inptEmail">
+
+            <label for="inptHomeAddress"><b>Home Address:</b></label>
+            <input type="text" placeholder="Enter Home Address" name="inptHomeAddress" id="inptHomeAddress">
+
+            <label for="inptCity"><b>City:</b></label>
+            <input type="text" placeholder="Enter City" name="inptCity" id="inptCity">
+
+            <label for="inptPostalCode"><b>Postal Code:</b></label>
+            <input type="text" placeholder="Enter Postal Code" name="inptPostalCode" id="inptPostalCode">
+
+            <label for="inptDOB"><b>Date of Birth:</b></label>
+            <input type="date" placeholder="Enter Date of Birth" name="inptDOB" id="inptDOB">
+
+            <button type="submit" id="btnSignUp" name="btnSignUp" class="btnSignUp">Sign Up!</button>
+        </div>
+    </form>
+    <button type="submit" id="btnCancelSignUp" name="btnCancelSignUp" class="btnCancelSignUp">Cancel</button>
+</section>
+
+</body>
+</html>

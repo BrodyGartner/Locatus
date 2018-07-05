@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!--jQuery -->
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <!--jQuery Mobile-->
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <!--jQuery Validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLNXm7Q2_YxIXQ8soHFNCsTjFQ8UU4Nxo"
+            type="text/javascript"></script>
+    <script src="js/global.js"></script>
+    <script src="js/geo.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/locatusDAL.js"></script>
+    <script src="js/locatusFacade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/database.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+</head>
+<body class="home">
+<form onsubmit="login()" method="post">
+
+    <div class="container">
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" id="username" data-row-username="">
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password">
+
+        <div class="center">
+            <button type="submit" class="btnLogin">Login</button>
+        </div>
+
+    </div>
+</form>
+<button type="button" id="btnSignUpNow" class="btnSignUpNow" name="btnSignUpNow">Sign Up!</button>
+
+
+</body>
+</html>

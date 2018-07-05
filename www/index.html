@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/lib/jquery.mobile-1.4.5.min.css">
+
+
+    <script src="js/lib/jquery-2.1.4.js"></script>
+    <script src="js/lib/jquery.mobile-1.4.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/jquery.mobile-1.4.5.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <!--jQuery Validation-->
+    <script src="js/lib/jquery.validate.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLNXm7Q2_YxIXQ8soHFNCsTjFQ8UU4Nxo"
+            type="text/javascript"></script>
+    <script src="js/global.js"></script>
+    <script src="js/geo.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/locatusDAL.js"></script>
+    <script src="js/locatusFacade.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/database.js"></script>
+
+    <title>Locatus</title>
+</head>
+<body>
+<!--Index Website-->
+<div id="HomePage" data-role="page">
+    <div data-role="panel" id="overlayPanel" class="overlayPanel" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout" class="btnLogout">Logout</button>
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+
+        <div data-role="navbar" id="mainNavBar">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" class="ui-btn-active ui-state-persist" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <h1 id="welcome">Welcome to Locatus</h1><br>
+        <p id="welcomeP">Locatus allows you post status updates with a virtual location for whoever wants to see.
+            By enhancing just the use of a status it displays on a virtual map where the desired update has been posted.
+            Where's your status?<br><br> (Location NOT ALWAYS Accurate)
+        </p><br><br>
+        <h3 id="devs">Developed By: Brody Gartner and Emily De Leon (Section 2)<br>
+                        Contact Info: BGartner0927@conestogac.on.ca & EDeleon8425@conestogac.on.ca</h3>
+
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h3>&copy; Locatus</h3>
+    </footer>
+</div>
+
+<div id="SeeMap" data-role="page">
+    <div data-role="panel" id="overlayPanel1" class="overlayPanel1" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout2" class="btnLogout">Logout</button>
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel1" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar1">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div role="main" class="ui-content" id="PhotoMap">
+    </div>
+</div>
+
+<div id="NewsFeed" data-role="page">
+    <div data-role="panel" id="overlayPanel3" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout3" class="btnLogout">Logout</button>
+
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel3" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar3">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop" class="ui-btn-active ui-state-persist">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+
+        <form method="post">
+            <div class="statusForm">
+                <div class="wrapper">
+                    <div class="content">
+                        <input type="text" placeholder="What's New?" name="status" id="status">
+                    </div>
+                </div>
+                <div class="right">
+                    <input data-icon="plus" data-inline="true" data-mini="true" name="btnAddStatus" id="btnAddStatus" type="button" value="Add" />
+                </div>
+            </div>
+        </form>
+        <br>
+        <br>
+        <div id="feedArea">
+            <ul id="feed" data-role="listview" class="ui-listview-inset" >
+
+            </ul>
+        </div>
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h3>&copy; Locatus</h3>
+    </footer>
+</div>
+
+
+<!--Profile Page-->
+<div id="ProfilePage" data-role="page">
+    <div data-role="panel" id="overlayPanel4" class="overlayPanel4" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout4" class="btnLogout">Logout</button>
+
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel4" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar4">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop" class="ui-btn-active ui-state-persist">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <img src="img/profilePic.png" class="profilePic">
+        <div id="profileShow" class="profileShow" ></div>
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h3>&copy; Locatus</h3>
+    </footer>
+</div>
+
+<!--Settings Page-->
+<div id="EditProfile" data-role="page">
+    <div data-role="panel" id="overlayPanel5" class="overlayPanel5" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout5" class="btnLogout">Logout</button>
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel5" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar5">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <h2>
+            Settings:
+        </h2>
+        <div class="container">
+            <div class="center">
+                <button type="submit" id="btnUpdateLI" name="btnUpdateLI" class="btnUpdateLI">Update Login Info</button>
+                <button type="submit" id="btnUpdatePI" name="btnUpdatePI" class="btnUpdatePI">Update Personal Info</button>
+                <button type="submit" name="btnDeleteAccount" id="btnDeleteAccount" class="btnDeleteAccount">Delete Account</button>
+                <button type="submit" name="btnCancelSettings" id="btnCancelSettings" class="btnCancelSettings">Go Back</button>
+            </div>
+        </div>
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h3>&copy; Locatus</h3>
+    </footer>
+</div>
+
+<!--Edit LI Page-->
+<div id="EditLoginInfo" data-role="page">
+    <div data-role="panel" id="overlayPanel6" class="overlayPanel6" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout6" class="btnLogout">Logout</button>
+
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel6" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar6">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <h2>
+            Update Login Info:
+        </h2>
+        <form id="chgLIForm" name="chgLIForm" class="chgLIForm" method="post">
+            <div class="container">
+                <div class="center">
+                    <label for="passwordEdit"><b>Password:</b></label>
+                    <input type="password" name="passwordEdit" id="passwordEdit">
+
+                    <label for="verifyPasswordEdit"><b>Verify Password:</b></label>
+                    <input type="password" name="verifyPasswordEdit" id="verifyPasswordEdit">
+
+                    <button type="submit" id="btnLIEdit" class="btnLIEdit" name="btnLIEdit">Save</button>
+                    <button type="submit" name="btnCancelEdit" id="btnCancelEdit" class="btnCancelEdit">Go Back</button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h3>&copy; Locatus</h3>
+    </footer>
+</div>
+
+<!--Edit PI Page-->
+<div id="EditPersonalInfo" data-role="page">
+    <div data-role="panel" id="overlayPanel7" class="overlayPanel7" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout7" class="btnLogout">Logout</button>
+
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel7" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar7">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+    <section>
+        <h2>
+            Update Personal Info:
+        </h2>
+        <form method="post" id="chgPIForm" name="chgPIForm" class="chgPIForm">
+            <div class="container">
+                <div class="center">
+                    <label for="chgFirstName"><b>First Name:</b></label>
+                    <input type="text" name="chgFirstName" id="chgFirstName">
+
+                    <label for="chgLastName"><b>Last Name:</b></label>
+                    <input type="text" name="chgLastName" id="chgLastName">
+
+                    <label for="chgEmail"><b>Email:</b></label>
+                    <input type="text" name="chgEmail" id="chgEmail">
+
+                    <label for="chgAddress"><b>Address:</b></label>
+                    <input type="text" name="chgAddress" id="chgAddress">
+
+                    <label for="chgCity"><b>City:</b></label>
+                    <input type="text" name="chgCity" id="chgCity">
+
+                    <label for="chgPC"><b>Postal Code:</b></label>
+                    <input type="text" name="chgPC" id="chgPC">
+
+                    <label for="chgDOB"><b>Date of Birth:</b></label>
+                    <input type="date" name="chgDOB" id="chgDOB">
+                    <button type="submit" id="btnSavePI" class="btnSavePI" name="btnSavePI">Save</button>
+                    <button type="submit" name="btnCancelEdit1" id="btnCancelEdit1" class="btnCancelEdit1">Go Back</button>
+
+                </div>
+            </div>
+        </form>
+    </section>
+    <footer data-role="footer" data-theme="b" data-position="fixed">
+        <h3>&copy; Locatus</h3>
+    </footer>
+</div>
+<div id="ShowStatusLocation" data-role="page">
+    <div data-role="panel" id="overlayPanel7" class="overlayPanel7" data-display="overlay">
+        <h2>More:</h2>
+        <a href="#SeeMap" data-transition="pop"><button data-icon="location" type="submit">Map</button></a>
+        <a href="#EditProfile" data-transition="pop"><button type="submit" data-icon="gear">Settings</button></a>
+        <button data-icon="power" type="submit" id="logout8" class="btnLogout">Logout</button>
+
+    </div>
+    <header>
+        <div data-theme="a" data-role="header" class="topofheader">
+            <div data-role="main" class="ui-content">
+                <a href="#overlayPanel7" data-icon="bars" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-btn-a ui-icon-bars ui-btn-icon-left">More</a>
+            </div>
+        </div>
+        <div data-role="navbar" id="mainNavBar1">
+            <ul>
+                <li><a href="#HomePage" data-icon="home" data-transition="pop">Home</a></li>
+                <li><a href="#NewsFeed" data-icon="bars" class="ui-btn-active ui-state-persist" data-transition="pop">News Feed</a></li>
+                <li><a href="#ProfilePage" data-icon="bars" data-transition="pop">Profile</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div role="main" class="ui-content" id="StatusMap">
+    </div>
+</div>
+</body>
+</html>
